@@ -4,6 +4,11 @@ const PORT = 3007
 const moviesRouter = require('./routes/movies')
 const notFound = require('./middleware/notFound')
 const serverError = require('./middleware/serverError')
+const cors = require('cors')
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 
 app.use(express.json())
 app.use(express.static('public'))

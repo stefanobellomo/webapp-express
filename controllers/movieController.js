@@ -22,8 +22,8 @@ function show(req, res) {
     const id = req.params.id
 
     // scelgo di mostrare solo le info più interessanti per l'utente
-    const movieSql = 'SELECT id, title FROM movies WHERE id = ?'
-    const reviewSql = 'SELECT name, vote, text FROM reviews WHERE id = ?'
+    const movieSql = 'SELECT * FROM movies WHERE id = ?'
+    const reviewSql = 'SELECT * FROM reviews WHERE id = ?'
 
     connection.query(movieSql, [id], (err, movieResults) => {
         if (err) return res.status(500).json({ err: true, message: err.message })

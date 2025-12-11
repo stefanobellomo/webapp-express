@@ -23,7 +23,7 @@ function show(req, res) {
 
     // scelgo di mostrare solo le info più interessanti per l'utente
     const movieSql = 'SELECT * FROM movies WHERE id = ?'
-    const reviewSql = 'SELECT * FROM reviews JOIN movies ON reviews.movie_id = movies.id WHERE reviews.movie_id = ?'
+    const reviewSql = 'SELECT reviews.* FROM reviews JOIN movies ON reviews.movie_id = movies.id WHERE reviews.movie_id = ?'
 
     connection.query(movieSql, [id], (err, movieResults) => {
         if (err) return res.status(500).json({ err: true, message: err.message })
